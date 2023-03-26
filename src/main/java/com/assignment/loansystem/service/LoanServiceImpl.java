@@ -3,10 +3,13 @@ package com.assignment.loansystem.service;
 import com.assignment.loansystem.model.Loan;
 import com.assignment.loansystem.repository.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-public class LoanServiceImpl implements LoanService{
+
+@Service
+public class LoanServiceImpl{
 
 //    Dummy data of users for representing external registries
     Map<String, String> dummyPersonalCodes = Map.of("49002010965", "debt", "49002010976", "100", "49002010987", "300", "49002010998", "1000");
@@ -19,7 +22,7 @@ public class LoanServiceImpl implements LoanService{
     @Autowired
     private LoanRepository loanRepository;
 
-    @Override
+
     public Loan getLoanRequest(Loan loan) {
         return loanRepository.createRequest(loan);
     }

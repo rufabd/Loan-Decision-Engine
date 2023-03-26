@@ -1,7 +1,9 @@
 package com.assignment.loansystem.repository;
 
 import com.assignment.loansystem.model.Loan;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class LoanRepository {
 
     public Loan createRequest(Loan l) {
