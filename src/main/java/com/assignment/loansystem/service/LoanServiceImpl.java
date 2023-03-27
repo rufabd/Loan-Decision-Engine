@@ -79,6 +79,6 @@ public class LoanServiceImpl{
 
             } else return new Loan("Debt", 0, 0);
 
-        } else return new Loan("Invalid input", 0, 0);
+        } else return new Loan("Invalid-input", 0, 0);
     }
 }

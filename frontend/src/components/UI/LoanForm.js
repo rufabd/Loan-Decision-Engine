@@ -29,6 +29,9 @@ const LoanForm = (props) => {
     };
 
     props.onNewLoanData(loanData);
+    setEnteredPersonalCode("");
+    setEnteredAmount(2000);
+    setEnteredPeriod(12);
   };
 
   return (
@@ -62,7 +65,7 @@ const LoanForm = (props) => {
           <div className={styles.slider}>
             <PeriodSlider onAddPeriod={periodChangeHandler} />
           </div>
-          Selected Loan Amount:
+          Selected Loan Period:
           <input
             className={styles.slider_input}
             value={enteredPeriod}

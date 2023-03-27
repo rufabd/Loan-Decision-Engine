@@ -15,7 +15,6 @@ public class LoanController {
     @PostMapping("/check-loan")
     public Loan checkLoan(@RequestBody Loan loan) {
         Loan finalResult = loanService.calculateLoan(loan);
-        System.out.println(finalResult.getAmount() + " " + finalResult.getPeriod() + " " + finalResult.getPersonalCode());
         return loanService.calculateLoan(loan);
     }
 }
