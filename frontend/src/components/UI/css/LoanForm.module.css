@@ -1,0 +1,130 @@
+.container {
+  position: absolute;
+  background-color: #eacaff;
+  max-width: 800px;
+  max-height: 550px;
+  top: 100px;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  margin: 0px auto;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.form {
+  display: inline-block;
+}
+
+.single_input {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.single_input span {
+  position: absolute;
+  left: 5%;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: 0.3s;
+  pointer-events: none;
+  color: rgb(151, 151, 151);
+}
+
+.input[type="number"],
+.input[type="text"] {
+  display: block;
+  padding: 10px;
+  margin: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  background-color: #431c52;
+  border-radius: 10px;
+  transition: 0.3s;
+  border-bottom: 2px solid purple;
+  color: white;
+  font-size: 17px;
+}
+
+.input[type="number"] {
+  width: 710px;
+}
+
+.input:hover,
+.input:focus {
+  background-color: #3f3f3f;
+}
+
+.single_input .input[type="text"]:valid ~ span,
+.single_input .input[type="number"]:valid ~ span,
+.single_input .input[type="text"]:focus ~ span,
+.single_input .input[type="number"]:focus ~ span {
+  color: purple;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 13px;
+  margin-bottom: 35px;
+  background: #eacaff;
+  font-weight: bold;
+}
+
+.slider_input {
+  background-color: #eacaff;
+  outline: none;
+  border: none;
+  width: 40px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.form_actions {
+  margin-top: 30px;
+}
+
+.form_actions button {
+  font-size: 16px;
+  padding: 5px 25px;
+  outline: none;
+  border: none;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  transition: 0.3s;
+  height: 40px;
+}
+
+.form_actions button:hover {
+  background-color: rgb(2, 99, 2);
+  cursor: pointer;
+}
+
+.rules_btn {
+  position: relative;
+  margin-top: 10px;
+  font-size: 16px;
+  padding: 3px 25px;
+  outline: none;
+  border: none;
+  background-color: rgb(19, 111, 216);
+  color: white;
+  border-radius: 5px;
+  transition: 0.3s;
+  height: 40px;
+}
+
+.rules_btn:hover {
+  cursor: pointer;
+  background-color: rgb(15, 90, 175);
+}
