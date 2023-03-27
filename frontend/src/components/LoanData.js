@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const LoanData = (props) => {
-  // const [responseData, setResponseData] = useState({});
-  const [content, setContent] = useState("");
-  let toastBody = {
+  const toastBody = {
     position: "top-center",
     autoClose: 30000,
     hideProgressBar: false,
@@ -25,30 +23,31 @@ const LoanData = (props) => {
         )
         .then((response) => {
           if (response.data.length !== 0) {
+            let amount = response.data.amount;
+            let period = response.data.period;
             switch (response.data.personalCode) {
               case "Approved-more-required":
               case "Approved-more-ten":
                 toast.success(
-                  `Maximum approved amount: ${response.data.amount} (more than required)
-          Period: ${response.data.period} (exactly required period)`,
+                  `Approved max amount: €${amount} (more than required)
+            Period: ${period} months (exactly required)`,
                   toastBody
                 );
                 break;
               case "Approved-less-amount":
                 toast.warning(
-                  `Maximum approved amount: ${response.data.amount} (less than required)
-          Period: ${response.data.period} months (exactly required period)`,
+                  `Approved max amount: €${amount} (less than required)
+            Period: ${period} months (exactly required)`,
                   toastBody
                 );
                 break;
               case "Approved-more-period":
                 toast.warning(
-                  `Maximum approved amount: ${response.data.amount} (less than required)
-          Period: ${response.data.period} (more than required period)`,
+                  `Approved max amount: €${amount} (less than required)
+            Period: ${period} months (more than required)`,
                   toastBody
                 );
                 break;
-
               case "Rejected-impossible":
                 toast.error(
                   `Sorry! We tried our best but we can't approve any loan amount for any period for you`,
@@ -68,11 +67,6 @@ const LoanData = (props) => {
                 );
                 break;
               default:
-                console.log(
-                  response.data.personalCode,
-                  response.data.amount,
-                  response.data.period
-                );
                 toast.info(`Something went wrong! Try again later.`, toastBody);
             }
           }

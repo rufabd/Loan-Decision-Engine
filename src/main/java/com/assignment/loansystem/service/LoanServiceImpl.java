@@ -1,44 +1,35 @@
 package com.assignment.loansystem.service;
 
 import com.assignment.loansystem.model.Loan;
-import com.assignment.loansystem.repository.LoanRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.Map;
-
 
 @Service
 public class LoanServiceImpl{
 
 //    Dummy data of users for representing external registries
-    Map<String, String> dummyPersonalCodes = Map.of("49002010965", "debt", "49002010976", "100", "49002010987", "300", "49002010998", "1000");
+        Map<String, String> dummyPersonalCodes = Map.of("49002010965", "debt", "49002010976", "100", "49002010987", "300", "49002010998", "1000");
 
 //    Default variables according to given requirement.
     double minimumLoanAmount = 2000;
     double maximumLoanAmount = 10000;
     double minimumPeriod = 12;
     double maximumPeriod = 60;
-    @Autowired
-    private LoanRepository loanRepository;
 
-
-    public Loan getLoanRequest(Loan loan) {
-        return loanRepository.createRequest(loan);
-    }
-
-//    Checking input validity according to the given requirements
-    public boolean checkInputValidity(String code, double amount, double period) {
-        return((dummyPersonalCodes.containsKey(code)) && (amount >= minimumLoanAmount && amount <= maximumLoanAmount) && (period >= 12 && period <= 60));
+//    Number formatter for possible double values for preventing to provide user with messy data
+    public Double numberFormatter(double num) {
+        return Double.parseDouble((new DecimalFormat("##.#").format(num)));
     }
 
 //    Calculate maximum amount for credit scores > 1 and return decision
     public Loan amountForCreditMoreThanOne(double creditScore, double loanAmount, double loanPeriod) {
         double maxAmount =creditScore * loanAmount;
         if(maxAmount < 10000) {
-            return new Loan("Approved-more-required", maxAmount, loanPeriod);
+            return new Loan("Approved-more-required", numberFormatter(maxAmount), numberFormatter(loanPeriod));
         } else {
-            return new Loan("Approved-more-ten", maximumLoanAmount, loanPeriod);
+            return new Loan("Approved-more-ten", maximumLoanAmount, numberFormatter(loanPeriod));
         }
     }
 
@@ -48,14 +39,14 @@ public class LoanServiceImpl{
         if((periodToBeAdded + requestedPeriod) <= maximumPeriod) {
             double amountToBeOffered = finalAmountForGivenPeriod + periodToBeAdded*creditModifier;
             double offeredPeriod = periodToBeAdded + requestedPeriod;
-            return new Loan("Approved-more-period", amountToBeOffered, offeredPeriod);
+            return new Loan("Approved-more-period", numberFormatter(amountToBeOffered), numberFormatter(offeredPeriod));
         } else return new Loan("Rejected-impossible", 0, 0);
     }
 
 //    Calculate maximum amount for credit scores < 1 and return decision
     public Loan amountForCreditLessThanOne(double creditModifier, double requestedPeriod) {
         double finalAmountForGivenPeriod = creditModifier * requestedPeriod;
-        if(finalAmountForGivenPeriod >= minimumLoanAmount) return new Loan("Approved-less-amount", finalAmountForGivenPeriod, requestedPeriod);
+        if(finalAmountForGivenPeriod >= minimumLoanAmount) return new Loan("Approved-less-amount", numberFormatter(finalAmountForGivenPeriod), numberFormatter(requestedPeriod));
         else return searchingForNewPeriod(finalAmountForGivenPeriod, creditModifier, requestedPeriod);
     }
 
@@ -66,7 +57,7 @@ public class LoanServiceImpl{
         double requestedPeriod = loan.getPeriod();
 
         //        Before starting calculation, check validity of entered data
-        if(checkInputValidity(requestedPersonalCode, requestedAmount, requestedPeriod)) {
+        if(loan.checkInputValidity(requestedPersonalCode, requestedAmount, requestedPeriod, dummyPersonalCodes, maximumLoanAmount, minimumLoanAmount, maximumPeriod, minimumPeriod)) {
 
             //            Check if entered user has debt
             if(!(dummyPersonalCodes.get(requestedPersonalCode).equals("debt"))) {
