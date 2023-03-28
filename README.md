@@ -1,6 +1,6 @@
 # Loan Decision Engine
 
-## Project Description <hr>
+## Project Description
 This web application was built for deciding about the possible maximum offer 
 The purpose of the web application is to decide the possible maximum amount to be offered according to the pre-defined requirements and limits. The decision depends
 on the personal code, amount, period and credit score which is calculated according to the last three data fields which are entered by user. <br> <br>
@@ -20,16 +20,20 @@ purposes. So this application uses some dummy data for the 4 possible types of c
 - 49002010987 - segment 2 (credit_modifier = 300) <br>
 - 49002010998 - segment 3 (credit_modifier = 1000) <br><br>
 
-## Tech stack and setup of the project <hr>
+<hr>
+
+## Tech stack and setup of the project
 The project was developed by using Java(Spring Boot framework) on the back-end and JavaScript(React front-end library) on the client-side. <br><br>
 For setting up and running the project the following steps can be followed:<br><br>
 - Clone the project to your local machine. <br>
 - It would be very comfortable to open the front-end project in separate IDE window (VS Code for React projects is my favourite, for backend code Intellij IDE is preferable). <br><br>
 - Once both parts are opened (main project folder and front-end project folder), you need to go to front-end project and run "npm install" command for installing all dependencies. <br><br>
 - After these steps you are ready to go. First of all, you can run run Spring project by simply clicking on green play button (for Intellij IDE). Once the back-end project is running, you can run command of "npm start" on the front-end project. <br><br>
-- Now, when you open address of "http://localhost:3000" on the browser, you should be able to see the application. Here, "3000" is the default React port, but it can be something different for you. <hr>
+- Now, when you open address of "http://localhost:3000" on the browser, you should be able to see the application. Here, "3000" is the default React port, but it can be something different for you. 
+
+<hr>
 
 ## Process
-Till the final decision, the engine is going through the process which is described below in the chart: <br>
+Till the final decision, the engine is going through the process which is described below in the chart: <br><br>
 ![Flow](https://user-images.githubusercontent.com/72948977/228193744-b2a0cb98-f910-4c29-b774-1d75cef7bd9c.png)
 
