@@ -1,5 +1,4 @@
 # Loan Decision Engine
-<hr>
 
 ## Project Description <hr>
 This web application was built for deciding about the possible maximum offer 
@@ -28,4 +27,9 @@ For setting up and running the project the following steps can be followed:<br><
 - It would be very comfortable to open the front-end project in separate IDE window (VS Code for React projects is my favourite, for backend code Intellij IDE is preferable). <br><br>
 - Once both parts are opened (main project folder and front-end project folder), you need to go to front-end project and run "npm install" command for installing all dependencies. <br><br>
 - After these steps you are ready to go. First of all, you can run run Spring project by simply clicking on green play button (for Intellij IDE). Once the back-end project is running, you can run command of "npm start" on the front-end project. <br><br>
-- Now, when you open address of "http://localhost:3000" on the browser, you should be able to see the application. Here, "3000" is the default React port, but it can be something different for you.
+- Now, when you open address of "http://localhost:3000" on the browser, you should be able to see the application. Here, "3000" is the default React port, but it can be something different for you. <hr>
+
+## Process
+Till the final decision, the engine is going through the process which is described below in the chart: <br>
+![Flow](https://user-images.githubusercontent.com/72948977/228193744-b2a0cb98-f910-4c29-b774-1d75cef7bd9c.png)
+
