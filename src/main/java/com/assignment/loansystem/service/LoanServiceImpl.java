@@ -10,23 +10,23 @@ import java.util.Map;
 public class LoanServiceImpl{
 
 //    Dummy data of users for representing external registries
-        Map<String, String> dummyPersonalCodes = Map.of("49002010965", "debt", "49002010976", "100", "49002010987", "300", "49002010998", "1000");
+        private final Map<String, String> dummyPersonalCodes = Map.of("49002010965", "debt", "49002010976", "100", "49002010987", "300", "49002010998", "1000");
 
 //    Default variables according to given requirement.
-    double minimumLoanAmount = 2000;
-    double maximumLoanAmount = 10000;
-    double minimumPeriod = 12;
-    double maximumPeriod = 60;
+    private final double minimumLoanAmount = 2000;
+    private final double maximumLoanAmount = 10000;
+    private final double minimumPeriod = 12;
+    private final double maximumPeriod = 60;
 
 //    Number formatter for possible double values for preventing to provide user with messy data
-    public Double numberFormatter(double num) {
+    private Double numberFormatter(double num) {
         return Double.parseDouble((new DecimalFormat("##.#").format(num)));
     }
 
 //    Calculate maximum amount for credit scores > 1 and return decision
-    public Loan amountForCreditMoreThanOne(double creditScore, double loanAmount, double loanPeriod) {
+    private Loan amountForCreditMoreThanOne(double creditScore, double loanAmount, double loanPeriod) {
         double maxAmount =creditScore * loanAmount;
-        if(maxAmount < 10000) {
+        if(maxAmount < maximumLoanAmount) {
             return new Loan("Approved-more-required", numberFormatter(maxAmount), numberFormatter(loanPeriod));
         } else {
             return new Loan("Approved-more-ten", maximumLoanAmount, numberFormatter(loanPeriod));
@@ -34,7 +34,7 @@ public class LoanServiceImpl{
     }
 
 //    Search for new possible period if not suitable amount found for given period
-    public Loan searchingForNewPeriod(double finalAmountForGivenPeriod, double creditModifier, double requestedPeriod) {
+    private Loan searchingForNewPeriod(double finalAmountForGivenPeriod, double creditModifier, double requestedPeriod) {
         double periodToBeAdded = (minimumLoanAmount - finalAmountForGivenPeriod) / creditModifier;
         if((periodToBeAdded + requestedPeriod) <= maximumPeriod) {
             double amountToBeOffered = finalAmountForGivenPeriod + periodToBeAdded*creditModifier;
@@ -44,7 +44,7 @@ public class LoanServiceImpl{
     }
 
 //    Calculate maximum amount for credit scores < 1 and return decision
-    public Loan amountForCreditLessThanOne(double creditModifier, double requestedPeriod) {
+    private Loan amountForCreditLessThanOne(double creditModifier, double requestedPeriod) {
         double finalAmountForGivenPeriod = creditModifier * requestedPeriod;
         if(finalAmountForGivenPeriod >= minimumLoanAmount) return new Loan("Approved-less-amount", numberFormatter(finalAmountForGivenPeriod), numberFormatter(requestedPeriod));
         else return searchingForNewPeriod(finalAmountForGivenPeriod, creditModifier, requestedPeriod);

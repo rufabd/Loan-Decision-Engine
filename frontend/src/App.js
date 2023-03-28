@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
-import AppBar from "./components/AppBar";
+import LoanData from "./components/DataFetch/LoanData";
 import LoanForm from "./components/UI/LoanForm";
-import LoanData from "./components/LoanData";
-// import Decision from "./components/Decision";
 
 function App() {
   const [loanData, setLoanData] = useState({});
@@ -12,10 +10,8 @@ function App() {
   };
   return (
     <div className="App">
-      <AppBar />
       <LoanForm onNewLoanData={enteredLoanDataHandler} />
       <LoanData enteredLoanData={loanData} />
-      {/* <Decision /> */}
     </div>
   );
 }

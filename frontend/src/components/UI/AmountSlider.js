@@ -42,6 +42,7 @@ const PeriodSlider = (props) => {
       min={min}
       max={max}
       onAddLoanAmount={addNewAmountHandler}
+      value={props.value}
     />
   );
 };

@@ -28,6 +28,7 @@ const NumberSlider = (props) => {
         min={props.min}
         max={props.max}
         valueLabelDisplay="auto"
+        value={props.value}
         onChange={props.min === 12 ? periodChangeHandler : amountChangeHandler}
       />
     </Box>

@@ -49,15 +49,18 @@ const LoanForm = (props) => {
                 type="text"
                 size={75}
                 className={styles.input}
+                value={enteredPersonalCode}
                 required
                 onChange={personalCodeHandler}
-                value={enteredPersonalCode}
               />
               <span>Personal code</span>
             </div>
             <div>
               <div className={styles.slider}>
-                <AmountSlider onAddAmount={amountChangeHandler} />
+                <AmountSlider
+                  onAddAmount={amountChangeHandler}
+                  value={enteredAmount}
+                />
               </div>
               Selected Loan Amount: €
               <input
@@ -68,7 +71,10 @@ const LoanForm = (props) => {
               />
             </div>
             <div className={styles.slider}>
-              <PeriodSlider onAddPeriod={periodChangeHandler} />
+              <PeriodSlider
+                onAddPeriod={periodChangeHandler}
+                value={enteredPeriod}
+              />
             </div>
             Selected Loan Period:
             <input
