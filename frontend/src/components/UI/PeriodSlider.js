@@ -1,6 +1,7 @@
 import React from "react";
 import NumberSlider from "./NumberSlider";
 
+// Settings to use re-usable component NumberSlider for PeriodSlider
 const marks = [
   {
     value: 12,
@@ -29,6 +30,7 @@ const step = 1;
 const min = 12;
 const max = 60;
 
+// Function for passing selected period to the NumberSlider re-usable component to show the value on the slider
 const PeriodSlider = (props) => {
   const addNewPeriodHandler = (event) => {
     props.onAddPeriod(event);

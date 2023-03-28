@@ -5,9 +5,12 @@ import PeriodSlider from "./PeriodSlider";
 import Modal from "./Modal";
 
 const LoanForm = (props) => {
+  // Default values for input and sliders
   const [enteredPersonalCode, setEnteredPersonalCode] = useState("");
   const [enteredAmount, setEnteredAmount] = useState(2000);
   const [enteredPeriod, setEnteredPeriod] = useState(12);
+
+  // Handling functions for each input and slider
 
   const personalCodeHandler = (event) => {
     setEnteredPersonalCode(event.target.value);
@@ -21,6 +24,7 @@ const LoanForm = (props) => {
     setEnteredPeriod(event.target.value);
   };
 
+  // Getting data on form submit
   const formSubmitHandler = (event) => {
     event.preventDefault();
     const loanData = {

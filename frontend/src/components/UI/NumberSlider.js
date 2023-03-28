@@ -6,6 +6,7 @@ function valuetext(value) {
   return `${value}`;
 }
 
+// Reusable component for sliders
 const NumberSlider = (props) => {
   const marks = props.marks;
 
