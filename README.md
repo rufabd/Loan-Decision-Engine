@@ -1,6 +1,7 @@
 # Loan Decision Engine
 <hr>
-## Project description <hr>
+
+## Project Description <hr>
 This web application was built for deciding about the possible maximum offer 
 The purpose of the web application is to decide the possible maximum amount to be offered according to the pre-defined requirements and limits. The decision depends
 on the personal code, amount, period and credit score which is calculated according to the last three data fields which are entered by user. <br> <br>
