@@ -1,6 +1,6 @@
 # Loan Decision Engine
-<hr><br><br>
-## Project description <hr><br><br>
+<hr>
+## Project description <hr>
 This web application was built for deciding about the possible maximum offer 
 The purpose of the web application is to decide the possible maximum amount to be offered according to the pre-defined requirements and limits. The decision depends
 on the personal code, amount, period and credit score which is calculated according to the last three data fields which are entered by user. <br> <br>
@@ -20,7 +20,7 @@ purposes. So this application uses some dummy data for the 4 possible types of c
 - 49002010987 - segment 2 (credit_modifier = 300) <br>
 - 49002010998 - segment 3 (credit_modifier = 1000) <br><br>
 
-## Tech stack and setup of the project <hr><br><br>
+## Tech stack and setup of the project <hr>
 The project was developed by using Java(Spring Boot framework) on the back-end and JavaScript(React front-end library) on the client-side. <br><br>
 For setting up and running the project the following steps can be followed:<br><br>
 - Clone the project to your local machine. <br>
